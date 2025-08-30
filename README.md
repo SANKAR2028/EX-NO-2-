@@ -1,5 +1,9 @@
 ## EX. NO:2 IMPLEMENTATION OF PLAYFAIR CIPHER
-
+```
+NAME: SANKAR S
+DEPT: B.E/CSE
+REG NO: 212224040291
+```
  
 
 ## AIM:
@@ -34,10 +38,38 @@ STEP-5: Display the obtained cipher text.
 
 
 
-Program:
+## Program:
+```
+import numpy as np
+def hill_cipher():
+    # Encryption and Decryption matrices (key and inverse key)
+    a = np.array([[6, 24, 1], [13, 16, 10], [20, 17, 15]])
+    b = np.array([[8, 5, 10], [21, 8, 21], [21, 12, 8]])
+    # Get plaintext from user
+    msg = input("Enter plain text (3 uppercase letters): ").upper()
+    if len(msg) != 3 or not msg.isalpha():
+        print("Invalid input. Please enter exactly 3 uppercase letters.")
+        return
+    print("Enter plain text:", msg)
+    # Convert characters to numerical values (A=0, B=1, ...)
+    c = np.array([ord(char) - ord('A') for char in msg])
+    print("Plain text numerical values:", c)
+    # Encrypt the message
+    d = np.dot(a, c) % 26
+    print("\nEncrypted Cipher Text:", "".join([chr(val + ord('A')) for val in d]))
+    # Decrypt the message
+    decrypted_c = np.dot(b, d) % 26
+    print("Decrypted Cipher Text:", "".join([chr(val + ord('A')) for val in decrypted_c]))
+
+if __name__ == "__main__":
+    hill_cipher()
+
+```
 
 
 
 
 
-Output:
+## Output:
+
+<img width="1450" height="784" alt="image" src="https://github.com/user-attachments/assets/7f41cb81-99c2-4db9-af7e-6dfd6d53e0c1" />
